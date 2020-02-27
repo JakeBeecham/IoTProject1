@@ -7,7 +7,7 @@
   The other goes to Battery + and also to Arduino Vin
   The middle (connection between two resistors) goes to Arduino A0
 */
-
+//Edited by Melissa Kerins
 #include <Wire.h>
 #include "rgb_lcd.h"
 
