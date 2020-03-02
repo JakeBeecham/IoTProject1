@@ -38,10 +38,11 @@ void setup()
 
 void loop()
 {
-  printVolts();
+  float voltage = printVolts();
+  setBackgroundColour(voltage);
 }
  
- void printVolts()
+ float printVolts()
 {
   int sensorValue = analogRead(A0); //read the A0 pin value
   float voltage = sensorValue * (5.00 / 1023.00) * 2; //convert the value to a true voltage.
@@ -49,8 +50,27 @@ void loop()
   lcd.print("voltage = ");
   lcd.print(voltage); //print the voltage to LCD
   lcd.print(" V");
+  return voltage;
   //if (voltage < 6.50) //set the voltage considered low battery here
   //{
   // digitalWrite(led_pin, HIGH);
   //}
+}
+
+void setBackgroundColour(float voltage)
+{
+  if(voltage < 4.00)
+  {
+    const int colorR = 255;
+    const int colorG = 0;
+    const int colorB = 0;
+    lcd.setRGB(colorR, colorG, colorB);
+  }
+  else
+  {
+    const int colorR = 0;
+    const int colorG = 255;
+    const int colorB = 0;
+    lcd.setRGB(colorR, colorG, colorB);
+  }
 }
